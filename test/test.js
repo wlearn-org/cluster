@@ -1,5 +1,5 @@
-import { ClusterModel, silhouette, calinskiHarabasz, daviesBouldin, adjustedRand, loadCluster } from '../src/index.js'
-import assert from 'node:assert/strict'
+const { ClusterModel, silhouette, calinskiHarabasz, daviesBouldin, adjustedRand, loadCluster } = require('../src/index.js')
+const assert = require('node:assert/strict')
 
 let tests = 0, passed = 0
 
@@ -32,6 +32,8 @@ function checkClusters(labels) {
   assert.notEqual(labels[0], labels[10])
   assert.notEqual(labels[5], labels[10])
 }
+
+async function main() {
 
 await loadCluster()
 
@@ -334,4 +336,8 @@ await run('unknown method throws', async () => {
 
 // ========== Summary ==========
 console.log(`\n${passed}/${tests} tests passed`)
-process.exit(passed === tests ? 0 : 1)
+if (passed !== tests) process.exit(1)
+
+}
+
+main()

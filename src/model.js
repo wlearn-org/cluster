@@ -1,4 +1,4 @@
-import { getWasm, loadCluster } from './wasm.js'
+const { getWasm, loadCluster } = require('./wasm.js')
 
 // Constants matching cluster.h
 const METRIC = { euclidean: 0, manhattan: 1, cosine: 2 }
@@ -20,7 +20,7 @@ function getLastError() {
   return wasm.ccall('wl_cluster_get_last_error', 'string', [], [])
 }
 
-export class ClusterModel {
+class ClusterModel {
   #handle = null
   #params = {}
   #fitted = false
@@ -313,7 +313,7 @@ export class ClusterModel {
 }
 
 // Standalone validation functions
-export function silhouette(X, labels, opts = {}) {
+function silhouette(X, labels, opts = {}) {
   const wasm = getWasm()
   const metric = resolveEnum(METRIC, opts.metric, 0)
   const ignoreNoise = opts.ignoreNoise ? 1 : 0
@@ -349,7 +349,7 @@ export function silhouette(X, labels, opts = {}) {
   return result
 }
 
-export function calinskiHarabasz(X, labels, opts = {}) {
+function calinskiHarabasz(X, labels, opts = {}) {
   const wasm = getWasm()
 
   let data, nrow, ncol
@@ -380,7 +380,7 @@ export function calinskiHarabasz(X, labels, opts = {}) {
   return result
 }
 
-export function daviesBouldin(X, labels, opts = {}) {
+function daviesBouldin(X, labels, opts = {}) {
   const wasm = getWasm()
 
   let data, nrow, ncol
@@ -411,7 +411,7 @@ export function daviesBouldin(X, labels, opts = {}) {
   return result
 }
 
-export function adjustedRand(labelsTrue, labelsPred) {
+function adjustedRand(labelsTrue, labelsPred) {
   const wasm = getWasm()
   const n = labelsTrue.length
   const trueArr = labelsTrue instanceof Int32Array ? labelsTrue : new Int32Array(labelsTrue)
@@ -428,3 +428,5 @@ export function adjustedRand(labelsTrue, labelsPred) {
   wasm._free(pPtr)
   return result
 }
+
+module.exports = { ClusterModel, silhouette, calinskiHarabasz, daviesBouldin, adjustedRand }

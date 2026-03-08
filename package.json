@@ -2,10 +2,10 @@
   "name": "@wlearn/cluster",
   "version": "0.1.0",
   "description": "Clustering library from scratch in C11 -- K-Means, Mini-batch K-Means, DBSCAN, Hierarchical, FastPAM k-medoids, validation indices",
-  "type": "module",
+  "type": "commonjs",
   "main": "src/index.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": { "require": "./src/index.js", "default": "./src/index.js" }
   },
   "files": [
     "src/",

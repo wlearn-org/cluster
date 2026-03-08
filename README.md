@@ -13,7 +13,7 @@ npm install @wlearn/cluster
 ## Quick Start
 
 ```js
-import { ClusterModel, silhouette, adjustedRand } from '@wlearn/cluster'
+const { ClusterModel, silhouette, adjustedRand } = require('@wlearn/cluster')
 
 // K-Means
 const km = await ClusterModel.create({ method: 'kmeans', k: 3 })
@@ -113,7 +113,7 @@ Schubert & Rousseeuw (2019). Medoids are actual data points, not means.
 Available as standalone functions after calling `loadCluster()`:
 
 ```js
-import { silhouette, calinskiHarabasz, daviesBouldin, adjustedRand } from '@wlearn/cluster'
+const { silhouette, calinskiHarabasz, daviesBouldin, adjustedRand } = require('@wlearn/cluster')
 
 silhouette(X, labels)              // mean silhouette coefficient
 calinskiHarabasz(X, labels)        // between/within variance ratio
