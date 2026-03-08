@@ -8,7 +8,7 @@ async function loadCluster(options = {}) {
   if (loading) return loading
 
   loading = (async () => {
-    const createCluster = require('../wasm/cluster.cjs')
+    const createCluster = require('../wasm/cluster.js')
     wasmModule = await createCluster(options)
     return wasmModule
   })()
