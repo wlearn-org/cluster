@@ -2,7 +2,7 @@
 
 Clustering library from scratch in C11. K-Means, Mini-batch K-Means, DBSCAN, Hierarchical Agglomerative, FastPAM k-medoids, plus validation indices (Silhouette, Calinski-Harabasz, Davies-Bouldin, Adjusted Rand Index).
 
-No browser-native WASM clustering library exists. This fills that gap.
+Part of [wlearn](https://wlearn.org) ([GitHub](https://github.com/wlearn-org), [all packages](https://github.com/wlearn-org/wlearn#repository-structure)). No browser-native WASM clustering library exists. This fills that gap.
 
 ## Install
 
