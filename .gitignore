@@ -1,6 +1,8 @@
 build/
 node_modules/
 wasm/
+dist/
 *.o
 *.so
 *.dylib
+package-lock.json
